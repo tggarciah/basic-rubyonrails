@@ -8,7 +8,12 @@ class ProdutosController < ApplicationController
     def create
         produto = params.require(:produto).permit(:nome, :descricao, :preco, :quantidade)
         Produto.create produto
+        redirect_to root_url
+    end
 
-        redirect_to root_path
+    def destroy
+        id = params[:id]
+        Produto.destroy id
+        redirect_to root_url
     end
 end

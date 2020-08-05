@@ -1,50 +1,49 @@
-<html>
-    <%= nav_bar brand: "Loja", brand_link: root_url %>
-    <div class="container">
-        <body>
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <td>Nome</td>
-                        <td>Descrição</td>
-                        <td>Preço</td>
-                        <td>Quantidade</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% @produtos.each do |produto| %>
-                        <tr>
-                            <td> <%= produto.nome %> </td>
-                            <td> <%= produto.descricao %> </td>
-                            <td> <%= produto.preco %> </td>
-                            <td> <%= produto.quantidade %> </td>
-                        </tr>
-                    <% end %>
-                </tbody>
-            </table>
-            <div class="alert alert-success" role="alert">
-                <h5 class="alert-heading">Produto com desconto</h5>
-            </div>
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <td>Nome</td>
-                        <td>Descrição</td>
-                        <td>Preço</td>
-                        <td>Quantidade</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% @produto_com_desconto.each do |produto| %>
-                        <tr>
-                            <td> <%= produto.nome %> </td>
-                            <td> <%= produto.descricao %> </td>
-                            <td> <%= produto.preco %> </td>
-                            <td> <%= produto.quantidade %> </td>
-                        </tr>
-                    <% end %>
-                </tbody>
-            </table>        
-        </body>
-    </div>
-</html>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <td>Nome</td>
+            <td>Descrição</td>
+            <td>Preço</td>
+            <td>Quantidade</td>
+            <td colspan="1">
+        </tr>
+    </thead>
+    <tbody>
+        <% @produtos.each do |produto| %>
+            <tr>
+                <td> <%= produto.nome %> </td>
+                <td> <%= produto.descricao %> </td>
+                <td> <%= produto.preco %> </td>
+                <td> <%= produto.quantidade %> </td>
+                <td> <%= link_to "Remover", produto, method: :delete %> </td>
+                <!-- 
+                    Montagem da URL sem ajuda do rails
+                    <td> <a href="produtos/<%= produto.id %>/remover"> Remover </a></td>
+                -->
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<div class="alert alert-success" role="alert">
+    <h5 class="alert-heading">Produto com desconto</h5>
+</div>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <td>Nome</td>
+            <td>Descrição</td>
+            <td>Preço</td>
+            <td>Quantidade</td>
+        </tr>
+    </thead>
+    <tbody>
+        <% @produto_com_desconto.each do |produto| %>
+            <tr>
+                <td> <%= produto.nome %> </td>
+                <td> <%= produto.descricao %> </td>
+                <td> <%= produto.preco %> </td>
+                <td> <%= produto.quantidade %> </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
